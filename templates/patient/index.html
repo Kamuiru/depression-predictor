@@ -1,0 +1,139 @@
+
+{% extends 'base.html' %} {% load static%} {% block content %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light h-5 mb-5">
+  <div class="container">
+    <a class="navbar-brand text-primary font-italic" href="#"
+      > <img
+      class="rounded mx-auto d-block w-3"
+      src="{% static 'images/logo1.PNG' %}"
+      alt=""
+      style="width: 60%"
+    /> </a
+    ><span class="text-primary">  <h2>Health+</h2></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+   
+      <!-- <span style="color:white;" class="navbar-toggler-icon"></span> -->
+      <span class="material-symbols-sharp"> menu </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Therapist Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'test' %}">Take Depression Test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Connect+</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav >
+
+ <section class="mt-5 container col-md-6" >
+  <h2 class="text-center mt-5" >Fill out the Survey form</h2>
+<form action="{% url 'test' %}" method="POST" >
+  {% csrf_token %}
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Are you female?</label>
+    {{feature_form.femaleres}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">What's your age?</label>
+    {{feature_form.age}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Are you married?</label>
+    {{feature_form.married}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">How many children do you have?</label>
+    {{feature_form.children}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">What's your household size?</label>
+    {{feature_form.hhsize}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Number of years spent in education?</label>
+    {{feature_form.edu}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Total No. of children in your household?</label>
+    {{feature_form.hh_children}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Amount spent on food in the past month?</label>
+    {{feature_form.cons_allfood}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Amount spent on medical services in the past month?</label>
+    {{feature_form.cons_med_total}} 
+  </div>
+  
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">Amount spent on education in the last year?</label>
+    {{feature_form.cons_ed}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Are you a wage laborer?</label>
+    {{feature_form.ent_wagelabor}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Do you own a farm?</label>
+    {{feature_form.ent_ownfarm}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Do you own a business?</label>
+    {{feature_form.ent_business}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Do you own a non-agricultural business?</label>
+    {{feature_form.ent_nonagbusiness}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">How many times did you eat meat last week?</label>
+    {{feature_form.fs_meat}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">How much did you spend on social functions last week?</label>
+    {{feature_form.cons_social}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Do you have enough food for tomorrow?</label>
+    {{feature_form.fs_enoughtom}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Did you sleep hungry anyday lastweek?</label>
+    {{feature_form.fs_sleephun}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form2Example2">medical expenses per episode last month?</label>
+    {{feature_form.med_expenses_hh_ep}} 
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-check-label" for="form2Example2">Is casual labor your main source of income?</label>
+    {{feature_form.labor_primary}} 
+  </div>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
+{{feature_form.errors}}
+{{feature_form.non_field_errors}}
+</section>
+
+{%endblock%}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% load static%} {% block content %}
+<div>
+  
+</div>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light h-5 mb-5">
+  <div class="container">
+    <a class="navbar-brand text-primary font-italic" href="#"
+      > <img
+      class="rounded mx-auto d-block w-3"
+      src="{% static 'images/logo1.PNG' %}"
+      alt=""
+      style="width: 60%"
+    /> </a
+    ><span class="text-primary">  <h2>Health+</h2></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+   
+      <!-- <span style="color:white;" class="navbar-toggler-icon"></span> -->
+      <span class="material-symbols-sharp"> menu </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Therapist Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'test' %}">Take Depression Test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Connect+</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav >
+<div class="container mt-5">
+  <!-- <div>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    </div> -->
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="mt-5">Schedule</h2>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <a href="{% url 'schedule.create' %}" class="btn btn-primary me-2 mt-5"
+        >New Schedule</a
+      >
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Hours</th>
+      </tr>
+    </thead>
+    {% for schedule in schedules %}
+    <tbody>
+      <tr>
+        <td>{{schedule.day}}</td>
+        <td>{{schedule.hours}}</td>
+        <td><a href="{% url 'schedule.update' schedule.id%}">Update</a></td>
+        <td><a href="{% url 'schedule.delete' schedule.id%}">Delete</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
