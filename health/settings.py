@@ -82,8 +82,8 @@ AUTH_USER_MODEL = 'accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mh7',
-        'USER': 'root',
+        'NAME': 'lmevhorr_train',
+        'USER': 'lmevhorr_train',
         'PASSWORD': 'Musa1882',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
